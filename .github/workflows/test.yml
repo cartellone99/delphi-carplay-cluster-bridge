@@ -13,3 +13,6 @@ jobs:
         with:
           node-version: '22'
       - run: node --test
+      - run: cmake -S native/rgi -B build/rgi -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang
+      - run: cmake --build build/rgi
+      - run: ctest --test-dir build/rgi --output-on-failure
